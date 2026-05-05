@@ -1,6 +1,7 @@
-// hooks/useCityDB.js
 import { useState, useEffect } from "react";
 import initSqlJs from "sql.js";
+import sqlWasmUrl from "../assets/sql-wasm.wasm"; // 静态导入 WASM
+import citiesDbUrl from "../assets/cities.db"; // 静态导入数据库
 
 export function useCityDB() {
   const [db, setDb] = useState(null);
@@ -12,13 +13,13 @@ export function useCityDB() {
 
     async function load() {
       try {
-        // 1. 初始化 SQL.js，指定 wasm 路径
+        // 1. 初始化 SQL.js，直接使用导入的 wasm 路径
         const SQL = await initSqlJs({
-          locateFile: (file) => `/sql-wasm.wasm`, // 从 public 加载
+          locateFile: () => sqlWasmUrl,
         });
 
-        // 2. 从 public 拉取数据库二进制
-        const response = await fetch("/cities.db");
+        // 2. 直接 fetch 导入的数据库路径
+        const response = await fetch(citiesDbUrl);
         const buffer = await response.arrayBuffer();
         const database = new SQL.Database(new Uint8Array(buffer));
 
@@ -41,7 +42,6 @@ export function useCityDB() {
     };
   }, []);
 
-  // 通用查询函数
   const query = (sql, params = []) => {
     if (!db) return [];
     try {

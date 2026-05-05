@@ -38,7 +38,6 @@ sketch
 
 ### Others ###
 scripts
-public/cities.json
-public/cities.json.old
+private
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,react
