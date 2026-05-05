@@ -8,7 +8,8 @@
     "build": "vite build",
     "build:db": "node scripts/json2db.cjs",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "better-sqlite3": "^12.9.0",
@@ -20,6 +21,7 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
+    "gh-pages": "^6.3.0",
     "vite": "^8.0.10"
   }
 }

@@ -1,8 +1,44 @@
-# Ignore scripts
-/scripts/
+# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,react
+# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,react
 
-# Ignore specific files in public folder
-/public/
-/.git/
-# /public/cities.json
-# /public/cities.json.old
+### react ###
+.DS_*
+*.log
+logs
+**/*.backup.*
+**/*.back.*
+
+node_modules
+bower_components
+
+*.sublime*
+
+psd
+thumb
+sketch
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+.ionide
+
+### Others ###
+scripts
+public/cities.json
+public/cities.json.old
+
+# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,react
