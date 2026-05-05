@@ -1,0 +1,7 @@
+# Ignore scripts
+/scripts/
+
+# Ignore specific files in public folder
+/public/
+# /public/cities.json
+# /public/cities.json.old
