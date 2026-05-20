@@ -1,6 +1,6 @@
 export default function CityInput({ handleSubmit, nameInput, setNameInput }) {
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="city-form" onSubmit={handleSubmit}>
       <input
         type="text"
         className="city-input"

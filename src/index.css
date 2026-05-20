@@ -1,13 +1,16 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
+  --text: #59697e;
+  --text-h: #111519;
+  --text-light: #fff;
   --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
+  --border: #b3d3fc;
+  --code-bg: #fef0dd;
+  --accent: #69a8f9;
+  --accent-hover: #5e97e0;
+  --accent-bg: rgba(105, 168, 249, 0.1);
+  --accent-border: rgba(105, 168, 249, 0.9);
+  --darker-border: #7d93b0;
+  --social-bg: rgba(254, 240, 221, 0.5);
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
@@ -54,12 +57,14 @@
 
 body {
   margin: 0;
+  background-color: var(--accent-bg);
 }
 
 #root {
   width: 1126px;
   max-width: 100%;
   margin: 0 auto;
+  padding: 0 16px;
   text-align: center;
   border-inline: 1px solid var(--border);
   min-height: 100svh;
@@ -102,7 +107,7 @@ ul {
   height: 200px;
   overflow-x: hidden;
   overflow-y: auto;
-  border: 2px solid black;
+  border: 1px solid var(--border);
   border-radius: 10px;
 }
 
@@ -112,7 +117,7 @@ ul::-webkit-scrollbar {
 }
 
 .typed-city-list li:hover {
-  background-color: #0001;
+  background-color: var(--accent-bg);
 }
 
 .typed-count {
@@ -125,7 +130,7 @@ ul::-webkit-scrollbar {
 .map-display {
   position: relative;
   height: 385px;
-  border: 1px solid black;
+  border: 1px solid var(--darker-border);
   border-radius: 10px;
 }
 
@@ -137,17 +142,20 @@ ul::-webkit-scrollbar {
   z-index: 1;
 }
 .circles circle {
-  fill: rgba(255, 0, 0, 0.2);
-  stroke: rgba(255, 0, 0, 0.8);
+  fill: rgba(251, 152, 13, 0.2);
+  stroke: rgba(251, 152, 13, 0.9);
   stroke-width: 0.3;
   transform-box: fill-box;
   transform-origin: center;
   transition: all 0.05s ease-in-out;
 }
 .circles circle:hover {
-  fill: rgba(255, 0, 0, 0.3);
+  fill: rgba(251, 152, 13, 0.3);
   transform: scale(1.5);
   cursor: pointer;
+}
+.circles text {
+  fill: var(--text-h);
 }
 
 .admin {
@@ -162,4 +170,67 @@ ul::-webkit-scrollbar {
 .circle-size {
   display: flex;
   justify-content: center;
+  margin-bottom: 8px;
+}
+
+.city-form {
+  margin-bottom: 8px;
+}
+
+.city-input {
+  border: 1px solid var(--border);
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.city-input:focus {
+  border-color: var(--accent-border);
+}
+
+.btn {
+  border: none;
+  border-radius: 8px;
+  background-color: var(--accent);
+  color: var(--text-light);
+  padding: 4px 16px;
+  margin-left: 8px;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: var(--accent-hover);
+  cursor: pointer;
+}
+
+[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  outline: 0;
+  background-color: transparent;
+}
+[type="range"]::-webkit-slider-runnable-track {
+  height: 8px;
+  background: var(--accent-bg);
+}
+[type="range" i]::-webkit-slider-container {
+  height: 100%;
+  overflow: hidden;
+}
+[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  border: 1px solid transparent;
+  margin-top: -4px;
+  border-image: linear-gradient(var(--accent), var(--accent)) 0 fill / 7 15 7
+    0 / 0px 0px 0 2000px;
+}
+[type="range"]::-webkit-slider-thumb:hover {
+  background-color: var(--accent-hover);
+  border-image: linear-gradient(var(--accent-hover), var(--accent-hover)) 0
+    fill / 7 15 7 0 / 0px 0px 0 2000px;
 }
