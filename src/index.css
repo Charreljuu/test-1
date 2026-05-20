@@ -116,6 +116,9 @@ ul::-webkit-scrollbar {
   height: 0;
 }
 
+.typed-city-list {
+  list-style-type: none;
+}
 .typed-city-list li:hover {
   background-color: var(--accent-bg);
 }

@@ -39,5 +39,6 @@ sketch
 ### Others ###
 scripts
 private
+dist
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,react
