@@ -1,6 +1,10 @@
 export default function CityInput({ handleSubmit, nameInput, setNameInput }) {
+  function handleClick() {
+    handleSubmit({ preventDefault: () => {} });
+  }
+
   return (
-    <form className="city-form" onSubmit={handleSubmit}>
+    <form className="city-form">
       <input
         type="text"
         className="city-input"
@@ -9,8 +13,12 @@ export default function CityInput({ handleSubmit, nameInput, setNameInput }) {
         onChange={(e) => {
           setNameInput(e.target.value);
         }}
+        onKeyDown={(e) => {
+          e.preventDefault();
+          handleSubmit({ preventDefault: () => {} });
+        }}
       />
-      <button type="submit" className="btn">
+      <button type="button" className="btn" onClick={handleClick}>
         确认
       </button>
     </form>
