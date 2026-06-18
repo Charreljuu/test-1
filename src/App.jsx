@@ -1,10 +1,10 @@
 import { useState } from "react";
-import CityCount from "./components/CityCount";
-import CityInput from "./components/CityInput";
-import TypedCityList from "./components/TypedCityList";
-import WorldMap from "./components/WorldMap";
-import { useCityDB } from "./hooks/useCityDB";
-import CircleSize from "./components/CircleSize";
+import CityCount from "@/components/CityCount";
+import CityInput from "@/components/CityInput";
+import TypedCityList from "@/components/TypedCityList";
+import WorldMap from "@/components/WorldMap";
+import { useCityDB } from "@/hooks/useCityDB";
+import CircleSize from "@/components/CircleSize";
 import { useRef } from "react";
 
 function App() {
