@@ -6,7 +6,6 @@ import { fileURLToPath, URL } from "node:url";
 export default defineConfig({
   plugins: [react()],
   base: "/test-1/",
-  assetsInclude: ["**/*.db", "**/*.wasm"], // 添加这两行
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),

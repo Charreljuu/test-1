@@ -197,6 +197,12 @@ ul::-webkit-scrollbar {
   margin-bottom: 8px;
 }
 
+.error {
+  color: var(--accent);
+  margin: 4px 0;
+  font-size: 13px;
+}
+
 .city-input {
   border: 1px solid var(--border);
   padding: 4px 8px;

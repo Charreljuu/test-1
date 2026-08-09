@@ -1,4 +1,4 @@
-export default function CityInput({ handleSubmit, nameInput, setNameInput }) {
+export default function CityInput({ handleSubmit, nameInput, setNameInput, disabled }) {
   function handleClick() {
     handleSubmit({ preventDefault: () => {} });
   }
@@ -10,6 +10,7 @@ export default function CityInput({ handleSubmit, nameInput, setNameInput }) {
         className="city-input"
         value={nameInput}
         placeholder="请输入城市名..."
+        disabled={disabled}
         onChange={(e) => {
           setNameInput(e.target.value.toString());
         }}
@@ -20,8 +21,8 @@ export default function CityInput({ handleSubmit, nameInput, setNameInput }) {
           }
         }}
       />
-      <button type="button" className="btn" onClick={handleClick}>
-        确认
+      <button type="button" className="btn" onClick={handleClick} disabled={disabled}>
+        {disabled ? "查询中..." : "确认"}
       </button>
     </form>
   );
