@@ -119,6 +119,9 @@ ul::-webkit-scrollbar {
 .typed-city-list {
   list-style-type: none;
 }
+.typed-city-list li {
+  cursor: pointer;
+}
 .typed-city-list li:hover {
   background-color: var(--accent-bg);
 }

@@ -14,6 +14,7 @@ function App() {
   const [size, setSize] = useState(5);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
+  const [focus, setFocus] = useState({ city: null, tick: 0 });
   const containerRef = useRef(null);
 
   async function handleSubmit(e) {
@@ -40,7 +41,12 @@ function App() {
 
   return (
     <>
-      <WorldMap typedList={typedList} circleSize={size} />
+      <WorldMap
+        typedList={typedList}
+        circleSize={size}
+        focus={focus}
+        onSelect={(city) => setFocus((f) => ({ city, tick: f.tick + 1 }))}
+      />
       <CircleSize value={size} setValue={setSize} />
       <CityInput
         handleSubmit={handleSubmit}
@@ -50,7 +56,11 @@ function App() {
       />
       {error && <p className="error">{error}</p>}
       <CityCount>{typedList.length}</CityCount>
-      <TypedCityList typedList={typedList} containerRef={containerRef} />
+      <TypedCityList
+        typedList={typedList}
+        containerRef={containerRef}
+        onSelect={(city) => setFocus((f) => ({ city, tick: f.tick + 1 }))}
+      />
     </>
   );
 }

@@ -4,7 +4,7 @@ import Markers from "./Markers";
 
 import useSvgMap from "@/hooks/useSvgMap";
 
-export default function WorldMap({ typedList, circleSize }) {
+export default function WorldMap({ typedList, circleSize, focus }) {
   const svgMap = useSvgMap();
 
   return (
@@ -28,7 +28,11 @@ export default function WorldMap({ typedList, circleSize }) {
               viewBox="0 0 800 385"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <Markers typedList={typedList} circleSize={circleSize} />
+              <Markers
+                typedList={typedList}
+                circleSize={circleSize}
+                focus={focus}
+              />
             </svg>
           </div>
         </TransformComponent>

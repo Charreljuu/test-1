@@ -1,6 +1,6 @@
 import { useLayoutEffect } from "react";
 
-export default function TypedCityList({ typedList, containerRef }) {
+export default function TypedCityList({ typedList, containerRef, onSelect }) {
   useLayoutEffect(() => {
     if (containerRef.current) {
       containerRef.current.scrollTop = containerRef.current.scrollHeight;
@@ -10,7 +10,7 @@ export default function TypedCityList({ typedList, containerRef }) {
   return (
     <ul className="typed-city-list" ref={containerRef}>
       {typedList.map((city) => (
-        <li key={city.id}>
+        <li key={city.id} onClick={() => onSelect(city)}>
           <span className="admin">{city.country_cn}</span>
           <span className="admin">{city.admin_cn}</span>
           <span className="admin">{city.name_cn}</span>

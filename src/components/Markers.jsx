@@ -1,18 +1,43 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { useTransformContext } from "react-zoom-pan-pinch";
+import { useControls } from "react-zoom-pan-pinch";
 
-export default function Markers({ typedList, circleSize }) {
+export default function Markers({ typedList, circleSize, focus }) {
   const [tooltip, setTooltip] = useState(null);
-  const ctx = useTransformContext();
+  const { instance, state, setTransform } = useControls();
   const [scale, setScale] = useState(1);
 
   useEffect(() => {
-    const unsub = ctx.onChange((ref) => {
+    const unsub = instance.onChange((ref) => {
       setScale(ref.instance.state.scale);
     });
     return unsub;
-  }, [ctx]);
+  }, [instance]);
+
+  useEffect(() => {
+    if (!focus?.city) return;
+    const content = instance.contentComponent;
+    const wrapper = instance.wrapperComponent;
+    if (!content || !wrapper || state.scale === 0) return;
+
+    const marker = content.querySelector(`[data-marker="${focus.city.id}"]`);
+    if (!marker) return;
+
+    const contentRect = content.getBoundingClientRect();
+    const markerRect = marker.getBoundingClientRect();
+    const wrapperRect = wrapper.getBoundingClientRect();
+    const x = (markerRect.left - contentRect.left) / state.scale;
+    const y = (markerRect.top - contentRect.top) / state.scale;
+    const focusScale = 8;
+
+    setTransform(
+      wrapperRect.width / 2 - focusScale * x,
+      wrapperRect.height / 2 - focusScale * y,
+      focusScale,
+      600,
+      "easeOut",
+    );
+  }, [focus, instance]);
 
   function handleMarkerEnter(e, name, cx, cy) {
     if (!e.target.closest("svg")) return;
@@ -31,6 +56,7 @@ export default function Markers({ typedList, circleSize }) {
         return (
           <circle
             key={city.id}
+            data-marker={city.id}
             cx={cx}
             cy={cy}
             r={circleSize}
