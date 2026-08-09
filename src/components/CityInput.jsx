@@ -10,7 +10,6 @@ export default function CityInput({ handleSubmit, nameInput, setNameInput, disab
         className="city-input"
         value={nameInput}
         placeholder="请输入城市名..."
-        disabled={disabled}
         onChange={(e) => {
           setNameInput(e.target.value.toString());
         }}
