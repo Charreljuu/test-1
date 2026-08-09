@@ -228,6 +228,16 @@ ul::-webkit-scrollbar {
   cursor: pointer;
 }
 
+.btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.btn:disabled:hover,
+.btn:disabled:focus {
+  background-color: var(--accent);
+}
+
 [type="range"] {
   -webkit-appearance: none;
   appearance: none;

@@ -22,7 +22,7 @@ export default function CityInput({ handleSubmit, nameInput, setNameInput, disab
         }}
       />
       <button type="button" className="btn" onClick={handleClick} disabled={disabled}>
-        {disabled ? "查询中..." : "确认"}
+        确认
       </button>
     </form>
   );
